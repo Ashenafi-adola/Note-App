@@ -1,0 +1,48 @@
+{% extends 'Noteapp/main.html' %}
+{% block form %}
+<a href="{% url 'logoutUser' %}">Logout</a>
+    <form action="" method="get">
+        <input type="search" name="q" placeholder="Search...">
+        <input type="submit" value="Search">
+    </form>
+{% endblock %}
+{% block content %}
+<style>
+    .main{
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr;
+    }
+    .divs{
+        border: solid rgb(228, 228, 228) 1px;
+        padding: 5px;
+    }
+</style>
+<div class="main">
+    <div class="divs">
+        <h5>All Subjects</h5>
+        <hr>
+        <p><a href="{% url 'addsubject' %}">Add Subject</a></p>
+        {% for subject in subjects %}
+            <div>
+                <a href="{% url 'subject' subject.id %}">{{subject.name}}</a>
+            </div>
+        {% endfor %}
+    
+    </div>
+    <div class="divs">
+        <h3>Note</h3>
+        <hr>
+        <h3 style="background-color: white; padding: 10px; margin: 0px;">{{note.title}}</h3>
+        <div style="background-color: white; padding: 10px; margin: 0px;">{{note.note}}</div>
+        <hr>
+        <a href="{% url 'editNote' note.id %}">Edit</a>
+        <a href="{% url 'deleteNote' note.id %}">Delete</a>
+        <hr>
+    </div>
+    <div class="divs">
+        <h4>Recent Notes</h4>
+        <hr>
+    </div>
+
+</div>
+{% endblock %}

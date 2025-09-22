@@ -1,0 +1,77 @@
+{% extends 'Noteapp/main.html' %}
+{% block form %}
+<style>
+    form{
+        margin: 10px;
+        padding: 5px;
+    }
+    .Search{
+        margin: 0px;
+        height: 30px;
+        border-top-left-radius: 12px;
+        border-bottom-left-radius: 12px;
+        width: 190px;
+        border-collapse: collapse;
+        padding-left: 20px;
+    }
+    .Submit{
+        margin: -5px;
+        height: 30px;
+        width: 60px;
+        border-top-right-radius: 12px;
+        border-bottom-right-radius: 12px;
+        border-collapse: collapse;
+    }
+</style>
+<form action="" method="get">
+    <input type="search" name="q" class="Search" placeholder="Search...">
+    <button type="submit" class="Submit">Search</button>
+</form>
+{% endblock %}
+{% block content %}
+<style>
+    .main{
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr;
+    }
+    .divs{
+        border: solid rgb(228, 228, 228) 1px;
+        padding: 5px;
+    }
+</style>
+<div class="main">
+    <div class="divs allsubs">
+        <h5 style="display: inline;">All Subjects</h5>
+        <hr>
+        
+        {% for subject in subjects %}
+            <div>
+                <a href="{% url 'subject' subject.id %}">{{subject.name}}</a>
+            </div>
+        {% endfor %}
+    
+    </div>
+    <div class="divs ">
+        <h3 style="display: inline;">{{subject}} Notes</h3>
+        <a href="{% url 'deleteSubject' subject.id%}">Delete {{subject}}</a>
+        <p style="display: block;"><b>Subject Description: </b>{{subject.description}}</p>
+        <hr>
+        <a href="{% url 'createSubjectNote' subject.name %}">ADD Note</a>
+        {% for note in notes %}
+            <div class="note">
+                <small ><b> Subject: {{note.subject}}</b></small>
+                <br>
+                <p>Title: <a href="{% url 'note' note.id %}">{{note.title}}</a></p>
+                <p>{{note}}...</p>
+                <small>{{note.updated|timesince}} ago</small>
+                <hr>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="divs">
+        <h4>Recent Notes</h4>
+        <hr>
+    </div>
+
+</div>
+{% endblock %}

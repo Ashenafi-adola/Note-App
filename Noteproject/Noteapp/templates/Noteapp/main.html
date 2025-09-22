@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html{
+            padding: 0px;
+        }
+        body{
+            background-color: #e7faff;
+            padding: 0px;
+            margin: 0px;
+        }
+        nav{
+            background-color: #00ff00;
+            margin: 0px;
+            padding: 5px;
+            height: 60px;
+        }
+        .form{
+            display: inline;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'home' %}">NOTE BOOK</a>
+        <a href="{% url 'logoutUser' %}" >Logout</a>
+        <div class="form">
+            {% block form %}
+            
+            {% endblock %}
+            
+        </div>
+        <p >Hello {{request.user}}</p>
+    </nav>
+    <hr>
+    {% block content %}
+
+    {% endblock %}
+</body>
+</html>

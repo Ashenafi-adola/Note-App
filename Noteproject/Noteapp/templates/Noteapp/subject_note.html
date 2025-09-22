@@ -1,0 +1,28 @@
+{% extends 'Noteapp/main.html' %}
+
+{% block content %}
+<style>
+    form{
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .note{
+        display: block;
+        width: 98%;
+        height: 500px;
+        margin: 5px;
+    }
+    input{
+        display: block;
+        width: 100px;
+        margin: 5px;
+    }
+</style>
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="text" class="title" name="title" placeholder="Title">
+    <textarea name="note" id="note" class="note"></textarea>
+    <input type="submit" value="Save">
+</form>
+{% endblock %}

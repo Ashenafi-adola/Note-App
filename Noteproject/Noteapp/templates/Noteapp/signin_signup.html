@@ -1,0 +1,57 @@
+{% extends 'Noteapp/main.html' %}
+{% block content %}
+{% if page == 'login' %}
+<style>
+     form{
+        width: 250px;
+        margin-left: auto;
+        margin-right: auto;
+        border: solid rgb(182, 182, 182) 1px;
+        padding: 5px;
+        background-color: rgb(245, 245, 245);
+    }
+    .note{
+        display: block;
+        width: 98%;
+        height: 500px;
+        margin: 5px;
+    }
+    input{
+        display: block;
+        width: 230px;
+        margin: 5px;
+        height: 25px;
+    }
+    button{
+        height: 25px;
+        margin: 5px;
+    }
+</style>
+<div>
+    <form action="" method="post">
+        {% csrf_token %}
+        <h3 style="text-align: center;">Login</h3>
+        <label for="">Username:</label>
+        <input type="text" name="username" placeholder="Username">
+        <label for="">Password:</label>
+        <input type="password" name="password" placeholder="Password">
+        <button type="submit">Login</button>
+        <p>Haven't signed up yet?</p>
+        <a href="{% url 'signup' %}">Sign up</a>
+    </form>
+    
+</div>
+{% else %}
+<div>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Register">
+        <p>Already Signed up?</p>
+        <a href="{% url 'login' %}">Login</a>
+    </form>
+    
+</div>
+{% endif %}
+
+{% endblock %}

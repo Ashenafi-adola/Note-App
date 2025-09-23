@@ -3,26 +3,27 @@
 {% block content %}
 <style>
     form{
-        width: 90%;
-        margin-left: auto;
-        margin-right: auto;
+        width: 52%;
+        margin: auto;
     }
     .note{
         display: block;
         width: 98%;
         height: 500px;
-        margin: 5px;
+        margin: auto;
     }
     input{
         display: block;
-        width: 100px;
+        width: 300px;
         margin: 5px;
+        height: 20px;
+        font-size: 16px;
     }
 </style>
 <form action="" method="post">
     {% csrf_token %}
     <input type="text" class="title" name="title" placeholder="Title">
-    <textarea name="note" id="note" class="note"></textarea>
-    <input type="submit" value="Save">
+    <textarea name="note" id="note" class="note" placeholder="Body"></textarea>
+    <button type="submit" value="Save">Save</button>
 </form>
 {% endblock %}

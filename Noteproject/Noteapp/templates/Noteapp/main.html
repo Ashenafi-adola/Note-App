@@ -35,7 +35,9 @@
             {% endblock %}
             
         </div>
-        <p >Hello {{request.user}}</p>
+        {% if user.is_authenticated %}
+        <p >Hello {{user.username.capitalize}}</p>
+        {% endif %}
     </nav>
     <hr>
     {% block content %}

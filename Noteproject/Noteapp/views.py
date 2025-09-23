@@ -14,14 +14,6 @@ def loginPage(request):
     if request.method == "POST":
         username = request.POST.get('username').lower()
         password = request.POST.get('password')
-        try:
-            user = User.objects.get(username=username)
-            if user.check_password(password):
-                login(request, user)
-                return redirect('home')
-        except :
-            messages.error(request, "Cridential does not match")
-
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
@@ -107,7 +99,6 @@ def createNote(request):
             note.save()
             return redirect('home')
     context = {
-
         'form':form,
     }
     return render(request, "Noteapp/note_subject.html", context)

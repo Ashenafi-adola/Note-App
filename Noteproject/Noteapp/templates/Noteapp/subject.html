@@ -54,9 +54,9 @@
     <div class="divs ">
         <h3 style="display: inline;">{{subject}} Notes</h3>
         <a href="{% url 'deleteSubject' subject.id%}">Delete {{subject}}</a>
+        <a href="{% url 'createSubjectNote' subject.name %}" style="float: right;">ADD Note</a>
         <p style="display: block;"><b>Subject Description: </b>{{subject.description}}</p>
         <hr>
-        <a href="{% url 'createSubjectNote' subject.name %}">ADD Note</a>
         {% for note in notes %}
             <div class="note">
                 <small ><b> Subject: {{note.subject}}</b></small>

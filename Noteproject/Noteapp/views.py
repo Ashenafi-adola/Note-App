@@ -49,10 +49,8 @@ def logoutUser(request):
 
 @login_required(login_url='login')
 def home(request):
-    print(request.user)
     q = request.GET.get("q") if request.GET.get("q") != None else ''
     subjects = Subject.objects.filter(user=request.user)
-    print(subjects)
     Notes = Note.objects.filter(
         Q(user=request.user) & (
             Q(title__icontains=q)|

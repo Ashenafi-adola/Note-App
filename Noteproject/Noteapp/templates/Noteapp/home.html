@@ -43,8 +43,6 @@
     <div class="divs">
         <h5 style="display: inline;">All Subjects</h5><a href="{% url 'addsubject' %}" style="float: right;">Add Subject</a>
         <hr>
-        
-        <hr>
         {% for subject in subjects %}
             <div>
                 <a href="{% url 'subject' subject.id %}">{{subject.name}}</a>

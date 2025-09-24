@@ -1,57 +1,64 @@
 {% extends 'Noteapp/main.html' %}
 {% block content %}
-{% if page == 'login' %}
 <style>
-     form{
-        width: 250px;
-        margin-left: auto;
-        margin-right: auto;
-        border: solid rgb(182, 182, 182) 1px;
-        padding: 5px;
-        background-color: rgb(245, 245, 245);
+    form{
+        width: 300px;
+        padding: 30px;
+        background: #eee;
+        margin: 10% auto;
+        border-radius: 5px;
+        border: solid rgb(190, 190, 190) 1px;
+        box-shadow: 1px 2px 3px;
     }
-    .note{
-        display: block;
-        width: 98%;
-        height: 500px;
-        margin: 5px;
+    form h2{
+        text-align: center;
+        margin-bottom: 20px;
     }
-    input{
-        display: block;
-        width: 230px;
-        margin: 5px;
-        height: 25px;
+    form ul{
+        display: none;
     }
-    button{
-        height: 25px;
-        margin: 5px;
+    form input{
+        width: 150px;
+        height: 30px;
+        border: 1px solid #ddd;
+        margin: 10px 0;
+        padding-left: 10px;
+    }
+    form label{
+        font-weight: bold;
+        width: 100px;
+    }
+    form button{
+        width: 120px;
+        height: 40px;
+        background: #333;
+        color: #fff;
+        font-weight: 500;
+        cursor: pointer;
+        border: none;
     }
 </style>
-<div>
-    <form action="" method="post">
-        {% csrf_token %}
-        <h3 style="text-align: center;">Login</h3>
-        <label for="">Username:</label>
-        <input type="text" name="username" placeholder="Username">
-        <label for="">Password:</label>
-        <input type="password" name="password" placeholder="Password">
-        <button type="submit">Login</button>
-        <p>Haven't signed up yet?</p>
-        <a href="{% url 'signup' %}">Sign up</a>
-    </form>
-    
-</div>
-{% else %}
-<div>
-    <form action="" method="post">
-        {% csrf_token %}
+
+<form action="" method="post">
+    {% csrf_token %}
+
+    {% if page == "signup" %}
+        <h2>Signup</h2>
         {{form.as_p}}
-        <input type="submit" value="Register">
-        <p>Already Signed up?</p>
-        <a href="{% url 'login' %}">Login</a>
-    </form>
-    
-</div>
-{% endif %}
+        <button type="submit">Signup</button>
+        <p>Already Have an acount Signin <a href="{% url 'login' %}">Here!</a></p>
+    {% else %}
+        <h2>Signin</h2>
+        <Label for="username" >Username:</Label>
+        <input type="text" name="username" class="username" placeholder="Username">
+        <label for="password">Password</label>
+        <input type="password" name="password" class="password" placeholder="Password">
+        <button type="submit">Signin</button>
+        <p>Don't Have an acount Create <a href="{% url 'signup' %}">Here!</a></p>
+    {% endif %}
+</form>
+
+
+
 
 {% endblock %}

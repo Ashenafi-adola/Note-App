@@ -41,7 +41,7 @@
 </style>
 <div class="main">
     <div class="divs">
-        <h5 style="display: inline;">All Subjects</h5><a href="{% url 'addsubject' %}" style="float: right;">Add Subject</a>
+        <h5 style="display: inline;">All Subjects</h5><button><a href="{% url 'addsubject' %}" style="float: right;">Add Subject</a></button>
         <hr>
         {% for subject in subjects %}
             <div>

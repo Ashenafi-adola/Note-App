@@ -28,15 +28,16 @@
 <body>
     <nav>
         <a href="{% url 'home' %}">NOTE BOOK</a>
-        <a href="{% url 'logoutUser' %}" >Logout</a>
-        <div class="form">
-            {% block form %}
-            
-            {% endblock %}
-            
-        </div>
         {% if user.is_authenticated %}
-        <p >Hello {{user.username.capitalize}}</p>
+            <a href="{% url 'logoutUser' %}" >Logout</a>
+            <div class="form">
+                {% block form %}
+                
+                {% endblock %}
+                
+            </div>
+            
+            <p >Hello {{user.username.capitalize}}</p>
         {% endif %}
     </nav>
     <hr>

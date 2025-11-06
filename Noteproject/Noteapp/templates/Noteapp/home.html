@@ -1,75 +1,60 @@
 {% extends 'Noteapp/main.html' %}
 {% block form %}
-    <style>
-        form{
-            margin: 10px;
-            padding: 5px;
-        }
-        .Search{
-            margin: 0px;
-            height: 30px;
-            border-top-left-radius: 12px;
-            border-bottom-left-radius: 12px;
-            width: 190px;
-            border-collapse: collapse;
-            padding-left: 20px;
-        }
-        .Submit{
-            margin: -5px;
-            height: 30px;
-            width: 60px;
-            border-top-right-radius: 12px;
-            border-bottom-right-radius: 12px;
-            border-collapse: collapse;
-        }
-    </style>
-    <form action="" method="get">
-        <input type="search" name="q" class="Search" placeholder="Search...">
-        <button type="submit" class="Submit">Search</button>
-    </form>
+        <form class="d-flex" action="" method="get">
+                <div class="input-group">
+                        <input type="search" name="q" class="form-control" placeholder="Search...">
+                        <button class="btn btn-outline-light" type="submit">Search</button>
+                </div>
+        </form>
 {% endblock %}
 {% block content %}
-<style>
-    .main{
-        display: grid;
-        grid-template-columns: 1fr 3fr 1fr;
-    }
-    .divs{
-        border: solid rgb(228, 228, 228) 1px;
-        padding: 5px;
-    }
-</style>
-<div class="main">
-    <div class="divs">
-        <h5 style="display: inline;">All Subjects</h5><button><a href="{% url 'addsubject' %}" style="float: right;">Add Subject</a></button>
-        <hr>
-        {% for subject in subjects %}
-            <div>
-                <a href="{% url 'subject' subject.id %}">{{subject.name}}</a>
+<div class="container my-4">
+    <div class="row">
+        <aside class="col-12 col-md-3 mb-3">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <span>All Subjects</span>
+                    <a href="{% url 'addsubject' %}" class="btn btn-sm btn-primary">Add</a>
+                </div>
+                <ul class="list-group list-group-flush">
+                    {% for subject in subjects %}
+                        <li class="list-group-item">
+                            <a href="{% url 'subject' subject.id %}">{{ subject.name }}</a>
+                        </li>
+                    {% empty %}
+                        <li class="list-group-item">No subjects yet.</li>
+                    {% endfor %}
+                </ul>
             </div>
-        {% endfor %}
-    
-    </div>
-    <div class="divs">
-        <h3 style="display: inline;">Notes</h3>
-        <hr>
-        {% for note in notes %}
-            <div class="note">
-                <small ><b> Subject: {{note.subject}}</b></small>
-                <br>
-                <p>Title: <a href="{% url 'note' note.id %}">{{note.title}}</a></p>
-                <p>{{note}}...</p>
-                <small>{{note.updated|timesince}} ago</small>
-                <hr>
-            </div>
-        {% endfor %}
-    
-    
-    </div>
-    <div class="divs">
-        <h4 style="display: inline;">Recent Notes</h4>
-        <hr>
-    </div>
+        </aside>
 
+        <main class="col-12 col-md-6 mb-3">
+            <div class="card">
+                <div class="card-header">Notes</div>
+                <div class="card-body">
+                    {% for note in notes %}
+                        <div class="mb-3">
+                            <h6 class="mb-1"><small class="text-muted">Subject: {{ note.subject }}</small></h6>
+                            <h5 class="mb-1"><a href="{% url 'note' note.id %}">{{ note.title }}</a></h5>
+                            <p class="mb-1 text-truncate">{{ note }}...</p>
+                            <small class="text-muted">{{ note.updated|timesince }} ago</small>
+                            <hr>
+                        </div>
+                    {% empty %}
+                        <p>No notes yet.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </main>
+
+        <aside class="col-12 col-md-3 mb-3">
+            <div class="card">
+                <div class="card-header">Recent Notes</div>
+                <div class="card-body">
+                    <!-- Recent notes could be listed here -->
+                </div>
+            </div>
+        </aside>
+    </div>
 </div>
 {% endblock %}

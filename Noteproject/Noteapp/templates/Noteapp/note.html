@@ -7,42 +7,44 @@
     </form>
 {% endblock %}
 {% block content %}
-<style>
-    .main{
-        display: grid;
-        grid-template-columns: 1fr 3fr 1fr;
-    }
-    .divs{
-        border: solid rgb(228, 228, 228) 1px;
-        padding: 5px;
-    }
-</style>
-<div class="main">
-    <div class="divs">
-        <h5>All Subjects</h5>
-        <hr>
-        <p><a href="{% url 'addsubject' %}">Add Subject</a></p>
-        {% for subject in subjects %}
-            <div>
-                <a href="{% url 'subject' subject.id %}">{{subject.name}}</a>
+<div class="container my-4">
+    <div class="row">
+        <aside class="col-12 col-md-3 mb-3">
+            <div class="card">
+                <div class="card-header">All Subjects</div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><a href="{% url 'addsubject' %}">Add Subject</a></li>
+                    {% for subject in subjects %}
+                        <li class="list-group-item"><a href="{% url 'subject' subject.id %}">{{ subject.name }}</a></li>
+                    {% empty %}
+                        <li class="list-group-item">No subjects yet.</li>
+                    {% endfor %}
+                </ul>
             </div>
-        {% endfor %}
-    
-    </div>
-    <div class="divs">
-        <h3>Note</h3>
-        <hr>
-        <h3 style="background-color: white; padding: 10px; margin: 0px;">{{note.title}}</h3>
-        <div style="background-color: white; padding: 10px; margin: 0px;">{{note.note}}</div>
-        <hr>
-        <a href="{% url 'editNote' note.id %}">Edit</a>
-        <a href="{% url 'deleteNote' note.id %}">Delete</a>
-        <hr>
-    </div>
-    <div class="divs">
-        <h4>Recent Notes</h4>
-        <hr>
-    </div>
+        </aside>
 
+        <main class="col-12 col-md-6 mb-3">
+            <div class="card">
+                <div class="card-header">Note</div>
+                <div class="card-body">
+                    <h3 class="card-title">{{ note.title }}</h3>
+                    <p class="card-text">{{ note.note }}</p>
+                    <div class="d-flex gap-2">
+                        <a class="btn btn-sm btn-outline-primary" href="{% url 'editNote' note.id %}">Edit</a>
+                        <a class="btn btn-sm btn-outline-danger" href="{% url 'deleteNote' note.id %}">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <aside class="col-12 col-md-3 mb-3">
+            <div class="card">
+                <div class="card-header">Recent Notes</div>
+                <div class="card-body">
+                    <!-- recent notes listing -->
+                </div>
+            </div>
+        </aside>
+    </div>
 </div>
 {% endblock %}

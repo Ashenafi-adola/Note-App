@@ -1,29 +1,29 @@
 {% extends 'Noteapp/main.html' %}
 
 {% block content %}
-<style>
-    form{
-        width: 52%;
-        margin: auto;
-    }
-    .note{
-        display: block;
-        width: 98%;
-        height: 500px;
-        margin: auto;
-    }
-    input{
-        display: block;
-        width: 300px;
-        margin: 5px;
-        height: 20px;
-        font-size: 16px;
-    }
-</style>
-<form action="" method="post">
-    {% csrf_token %}
-    <input type="text" class="title" name="title" placeholder="Title">
-    <textarea name="note" id="note" class="note" placeholder="Body"></textarea>
-    <button type="submit" value="Save">Save</button>
-</form>
+<div class="container my-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Create Note</h5>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label class="form-label" for="title">Title</label>
+                            <input id="title" name="title" type="text" class="form-control" placeholder="Title">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="note">Body</label>
+                            <textarea id="note" name="note" class="form-control" rows="10" placeholder="Body"></textarea>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

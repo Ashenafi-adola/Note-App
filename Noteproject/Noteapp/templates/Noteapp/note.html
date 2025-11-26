@@ -1,10 +1,11 @@
 {% extends 'Noteapp/main.html' %}
 {% block form %}
-<a href="{% url 'logoutUser' %}">Logout</a>
-    <form action="" method="get">
-        <input type="search" name="q" placeholder="Search...">
-        <input type="submit" value="Search">
-    </form>
+<form class="d-flex" action="" method="get">
+    <div class="input-group">
+            <input type="search" name="q" class="form-control" placeholder="Search...">
+            <button class="btn btn-outline-light" type="submit">Search</button>
+    </div>
+</form>
 {% endblock %}
 {% block content %}
 <div class="container my-4">

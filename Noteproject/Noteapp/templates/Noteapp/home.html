@@ -8,53 +8,6 @@
         </form>
 {% endblock %}
 {% block content %}
-<style>
-    .container{
-        grid-template-columns: 1fr 3fr 1fr;
-        display: grid;
-    }
-    .card{
-        border: solid black 1px;
-        display: inline-block;
-        
-    }
-</style>
-<div class="container">
-    <div class="card">
-        <span>All Subjects</span>
-            <a href="{% url 'addsubject' %}" class="btn btn-sm btn-primary">Add</a>
-            <ul class="list-group list-group-flush">
-                {% for subject in subjects %}
-                    <li class="list-group-item">
-                        <a href="{% url 'subject' subject.id %}">{{ subject.name }}</a>
-                    </li>
-                {% empty %}
-                    <li class="list-group-item">No subjects yet.</li>
-                {% endfor %}
-            </ul>
-    </div>
-        
 
-    <div class="card">
-        <div class="card-header"><h2>Notes</h2></div>
-        {% for note in notes %}
-            <div class="mb-3">
-                <h6 class="mb-1"><small class="text-muted">Subject: {{ note.subject }}</small></h6>
-                <h5 class="mb-1"><a href="{% url 'note' note.id %}">{{ note.title }}</a></h5>
-                <p class="mb-1 text-truncate">{{ note }}...</p>
-                <small class="text-muted">{{ note.updated|timesince }} ago</small>
-                <hr>
-            </div>
-        {% empty %}
-            <p>No notes yet.</p>
-        {% endfor %}
-    </div>
-    <div class="card">
-        <div class="card-header">Recent Notes</div>
-        <div class="card-body">
-            <!-- Recent notes could be listed here -->
-        </div>
-    </div>
 
-</div>
 {% endblock %}

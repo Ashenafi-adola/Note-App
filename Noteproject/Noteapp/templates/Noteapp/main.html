@@ -17,6 +17,22 @@
         }
         nav{
           background-color: rgb(0, 255, 0);
+          height: 80px;
+          padding: 20px;
+        }
+        .search-form{
+            display: inline-block;
+            float: right;
+            margin-bottom: 30px;
+            margin-top: auto;
+            vertical-align: middle;
+        }
+        .lgo-btn{
+            background: #ff0000;
+        }
+        .lgo-btn:hover{
+            background: #785858;
+            color: #ffffff;
         }
         </style>
 </head>
@@ -26,7 +42,7 @@
         <a class="" href="{% url 'home' %}">NOTE BOOK</a>
         {% if user.is_authenticated %}
          
-            <a class="btn btn-outline-light me-2" href="{% url 'logoutUser' %}">Logout</a>
+            <a class="btn btn-outline-light me-2 lgo-btn" href="{% url 'logoutUser' %}">Logout</a>
             <div class="search-form">
               {% block form %}{% endblock %}
             </div>

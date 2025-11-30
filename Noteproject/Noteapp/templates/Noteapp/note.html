@@ -8,44 +8,56 @@
 </form>
 {% endblock %}
 {% block content %}
-<div class="container my-4">
-    <div class="row">
-        <aside class="col-12 col-md-3 mb-3">
-            <div class="card">
-                <div class="card-header">All Subjects</div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><a href="{% url 'addsubject' %}">Add Subject</a></li>
-                    {% for subject in subjects %}
-                        <li class="list-group-item"><a href="{% url 'subject' subject.id %}">{{ subject.name }}</a></li>
-                    {% empty %}
-                        <li class="list-group-item">No subjects yet.</li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </aside>
-
-        <main class="col-12 col-md-6 mb-3">
-            <div class="card">
-                <div class="card-header">Note</div>
-                <div class="card-body">
-                    <h3 class="card-title">{{ note.title }}</h3>
-                    <p class="card-text">{{ note.note }}</p>
-                    <div class="d-flex gap-2">
-                        <a class="btn btn-sm btn-outline-primary" href="{% url 'editNote' note.id %}">Edit</a>
-                        <a class="btn btn-sm btn-outline-danger" href="{% url 'deleteNote' note.id %}">Delete</a>
-                    </div>
-                </div>
-            </div>
-        </main>
-
-        <aside class="col-12 col-md-3 mb-3">
-            <div class="card">
-                <div class="card-header">Recent Notes</div>
-                <div class="card-body">
-                    <!-- recent notes listing -->
-                </div>
-            </div>
-        </aside>
+<style>
+    .container{
+        grid-template-columns: 1fr 3fr 1fr;
+        display: grid;
+    }
+    .card{
+        border: solid black 1px;
+        
+    }
+    .note-div{
+       
+    }
+    .card-body{
+        overflow-y: scroll;
+    }
+</style>
+<div class="container">
+     <div class="card">
+        <div class="card-header"><h2>All Subjects</h2></div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><a href="{% url 'addsubject' %}">Add Subject</a></li>
+            {% for subject in subjects %}
+                <li class="list-group-item"><a href="{% url 'subject' subject.id %}">{{ subject.name }}</a></li>
+            {% empty %}
+                <li class="list-group-item">No subjects yet.</li>
+            {% endfor %}
+        </ul>
     </div>
+
+
+
+    <div class="card note-div">
+        <div class="card-header"><h2>Note</h2></div>
+        <div class="card-body">
+            <h3 class="card-title">{{ note.title }}</h3>
+            <p class="card-text">{{ note.note }}</p>
+            <div class="d-flex gap-2">
+                <a class="btn btn-sm btn-outline-primary" href="{% url 'editNote' note.id %}">Edit</a>
+                <a class="btn btn-sm btn-outline-danger" href="{% url 'deleteNote' note.id %}">Delete</a>
+            </div>
+        </div>
+     </div>
+
+    <div class="card">
+        <div class="card-header">Recent Notes</div>
+        <div class="card-body">
+            <!-- recent notes listing -->
+        </div>
+    </div>
+
+
 </div>
 {% endblock %}

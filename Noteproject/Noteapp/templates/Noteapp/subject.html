@@ -31,57 +31,5 @@
 </form>
 {% endblock %}
 {% block content %}
-<div class="container my-4">
-    <div class="row">
-        <aside class="col-12 col-md-3 mb-3">
-            <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <span>All Subjects</span>
-                    <a href="{% url 'addsubject' %}" class="btn btn-sm btn-primary">Add</a>
-                </div>
-                <ul class="list-group list-group-flush">
-                    {% for subject in subjects %}
-                        <li class="list-group-item"><a href="{% url 'subject' subject.id %}">{{ subject.name }}</a></li>
-                    {% empty %}
-                        <li class="list-group-item">No subjects yet.</li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </aside>
 
-        <main class="col-12 col-md-6 mb-3">
-            <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <span>{{ subject }} Notes</span>
-                    <div>
-                        <a href="{% url 'createSubjectNote' subject.name %}" class="btn btn-sm btn-success">Add Note</a>
-                        <a href="{% url 'deleteSubject' subject.id %}" class="btn btn-sm btn-danger ms-2">Delete</a>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <p><b>Subject Description:</b> {{ subject.description }}</p>
-                    <hr>
-                    {% for note in notes %}
-                        <div class="mb-3">
-                            <small class="text-muted">Subject: {{ note.subject }}</small>
-                            <h5><a href="{% url 'note' note.id %}">{{ note.title }}</a></h5>
-                            <p class="mb-1 text-truncate">{{ note }}...</p>
-                            <small class="text-muted">{{ note.updated|timesince }} ago</small>
-                            <hr>
-                        </div>
-                    {% empty %}
-                        <p>No notes for this subject yet.</p>
-                    {% endfor %}
-                </div>
-            </div>
-        </main>
-
-        <aside class="col-12 col-md-3 mb-3">
-            <div class="card">
-                <div class="card-header">Recent Notes</div>
-                <div class="card-body"></div>
-            </div>
-        </aside>
-    </div>
-</div>
 {% endblock %}

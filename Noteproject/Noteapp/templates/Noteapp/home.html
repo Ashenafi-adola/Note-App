@@ -37,7 +37,7 @@
                 <hr><a href="">Add NEW</a>
                 <div>
                         {% for subject in subjects %}
-                                <h4><a href="">{{subject}}</a></h4>
+                                <h4><a href="{% url 'subject' subject.id %}">{{subject}}</a></h4>
                                 <hr>
                         {% endfor %}
                 </div>
@@ -48,7 +48,7 @@
                 <div>
                         {% for note in notes %}
                                 <p>{{note.subject}}</p>
-                                <h4><a href="">{{note.title}}</a></h4>
+                                <h4><a href="{% url 'note' note.id %}">{{note.title}}</a></h4>
                                 <p>{{note}}...</p>
                                 <div><small>{{note.updated|timesince }}</small></div>
                                 <hr>

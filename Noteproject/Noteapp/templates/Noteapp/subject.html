@@ -67,12 +67,15 @@
     </div>
     <div class="card main-card">
             <div><h3>{{subject}}</h3></div>
+            <a href="">ADD NOTE</a>
+            <a href="">DELETE SUBJECT</a>
             <hr>
             <div>
                 <p><b>Description: </b>{{subject.description}}</p>
             </div>
             <hr>
             <div>
+                {% if notes %}
                     {% for note in notes %}
                             <p><b>{{note.subject}}</b></p>
                             <h4><a href="{% url 'note' note.id %}">{{note.title}}</a></h4>
@@ -80,6 +83,9 @@
                             <div><small>{{note.updated|timesince }}</small></div>
                             <hr>
                     {% endfor %}
+                {% else %}
+                        <h5>No note yet!</h5>
+                {% endif %}
             </div>
     </div>
     <div class="card">

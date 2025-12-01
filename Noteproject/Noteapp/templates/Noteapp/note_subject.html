@@ -1,5 +1,16 @@
 {% extends 'Noteapp/main.html' %}
 
 {% block content %}
+<div>
 
+    <div>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <h3>Create/ Edit Note</h3>
+            {{form.as_p}}
+            <input type="submit">
+        </form>
+    </div>
+
+</div>
 {% endblock %}

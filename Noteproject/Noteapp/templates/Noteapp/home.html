@@ -8,6 +8,57 @@
         </form>
 {% endblock %}
 {% block content %}
-
+<style>
+        .main-container{
+                display:  grid;
+                grid-template-columns: 1fr 3fr 1fr;
+                min-height: 100px;
+                
+                justify-self: center;
+                justify-content: center;
+                min-width: 1fr;
+        }
+        .card{
+                border:  solid black 1px;
+                margin: 2px;
+                border-radius: 5px;
+                min-width: 200px;
+                background-color: white;
+                padding: 5px;
+        }
+        .main-card{
+                min-width: 450px;
+        }
+</style>
+<div class="main-container">
+        <div class="card">
+                <div><h3>All Subjects</h3></div>
+                
+                <hr><a href="">Add NEW</a>
+                <div>
+                        {% for subject in subjects %}
+                                <h4><a href="">{{subject}}</a></h4>
+                                <hr>
+                        {% endfor %}
+                </div>
+        </div>
+        <div class="card main-card">
+                <div><h3>All Notes</h3></div>
+                <hr>
+                <div>
+                        {% for note in notes %}
+                                <p>{{note.subject}}</p>
+                                <h4><a href="">{{note.title}}</a></h4>
+                                <p>{{note}}...</p>
+                                <div><small>{{note.updated|timesince }}</small></div>
+                                <hr>
+                        {% endfor %}
+                </div>
+        </div>
+        <div class="card">
+                <div><h3>Recent Notes</h3></div>
+                <hr>
+        </div>
+</div>
 
 {% endblock %}

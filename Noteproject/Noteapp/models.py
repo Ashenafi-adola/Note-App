@@ -25,4 +25,4 @@ class Note(models.Model):
         ordering = ['-created', '-updated']
 
     def __str__(self):
-        return self.note[:50]
+        return self.note[:90]

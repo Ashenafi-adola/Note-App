@@ -1,4 +1,5 @@
 {% extends 'Noteapp/main.html' %}
+{% load static %}
 {% block form %}
         <form class="" action="" method="get">
                 <div class="">
@@ -8,34 +9,14 @@
         </form>
 {% endblock %}
 {% block content %}
-<style>
-        .main-container{
-                display:  grid;
-                grid-template-columns: 1fr 3fr 1fr;
-                min-height: 100px;
-                max-width: 95%;
-                justify-self: center;
-                justify-content: center;
-                min-width: 1fr;
-        }
-        .card{
-                border:  solid rgb(173, 173, 173) 1px;
-                margin: 2px;
-                border-radius: 5px;
-                min-width: 200px;
-                background-color: white;
-                padding: 5px;
-                box-shadow: 1px 2px 5px;
-        }
-        .main-card{
-                min-width: 450px;
-        }
-</style>
+
 <div class="main-container">
         <div class="card">
-                <div><h3>All Subjects</h3></div>
-                
-                <hr><a href="{% url 'addsubject' %}">Add NEW</a>
+                <div >
+                        <div style="display: inline-block;"><h3>All Subjects</h3></div>
+                        <a href="{% url 'addsubject' %}" class="btn-link">NEW +</a>
+                </div>
+                <hr>
                 <div>
                         {% for subject in subjects %}
                                 <h4><a href="{% url 'subject' subject.id %}">{{subject}}</a></h4>
@@ -44,7 +25,9 @@
                 </div>
         </div>
         <div class="card main-card">
-                <div><h3>All Notes</h3></div>
+                <div>
+                        <h3>All Notes</h3>
+                </div>
                 <hr>
                 <div>
                         {% for note in notes %}
@@ -57,7 +40,9 @@
                 </div>
         </div>
         <div class="card">
-                <div><h3>Recent Notes</h3></div>
+                <div>
+                        <h3>Recent Notes</h3>
+                </div>
                 <hr>
         </div>
 </div>

@@ -13,8 +13,12 @@
 <div class="main-container">
         <div class="card">
                 <div >
-                        <div style="display: inline-block;"><h3>All Subjects</h3></div>
-                        <a href="{% url 'addsubject' %}" class="btn-link">NEW +</a>
+                        <div class="sec-header" >
+                                <div>
+                                        <h3 style="display: inline-block;">All Subjects</h3>
+                                        <a href="{% url 'addsubject' %}" class="btn-link">NEW +</a>
+                                </div>
+                        </div>
                 </div>
                 <hr>
                 <div>
@@ -25,7 +29,7 @@
                 </div>
         </div>
         <div class="card main-card">
-                <div>
+                <div class="sec-header">
                         <h3>All Notes</h3>
                 </div>
                 <hr>
@@ -40,7 +44,7 @@
                 </div>
         </div>
         <div class="card">
-                <div>
+                <div class="sec-header">
                         <h3>Recent Notes</h3>
                 </div>
                 <hr>

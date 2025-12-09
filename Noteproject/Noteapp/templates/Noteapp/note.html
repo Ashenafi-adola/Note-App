@@ -10,7 +10,7 @@
 {% block content %}
 <div class="main-container">
     <div class="card">
-            <div><h3>All Subjects</h3></div>
+            <div class="sec-header"><h3>All Subjects</h3></div>
             
             <hr><a href="">Add NEW</a>
             <div>
@@ -21,10 +21,13 @@
             </div>
     </div>
     <div class="card main-card">
-            <div><h3 class="card-title">{{ note.title }}</h3></div>
-            <a class="btn btn-sm btn-outline-primary" href="{% url 'editNote' note.id %}">Edit</a>
-            <a class="btn btn-sm btn-outline-danger" href="{% url 'deleteNote' note.id %}">Delete</a>
+            <div  class="sec-header">
+                <h3 class="card-title" style="display: inline-block; width: 50%;"">{{ note.title }}</h3>
+                <a class="btn-link" href="{% url 'editNote' note.id %}" style="background-color: green;">📝Edit</a>
+                <a class="btn-link" href="{% url 'deleteNote' note.id %}" style="background-color: red;">🗑️Delete</a>
        
+        </div>
+            
             <hr>
             <div class="">
                 
@@ -32,7 +35,7 @@
             </div>
     </div>
     <div class="card">
-            <div><h3>Recent Notes</h3></div>
+            <div class="sec-header"><h3>Recent Notes</h3></div>
             <hr>
     </div>
 </div>

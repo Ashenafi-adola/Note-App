@@ -1,9 +1,10 @@
 {% extends 'Noteapp/main.html' %}
-
+{% load static %}
 {% block content %}
-<div>
 
-    <div>
+<div class="form-container">
+
+    <div class="form-div">
         <form action="" method="POST">
             {% csrf_token %}
             <h3>Create/ Edit Note</h3>

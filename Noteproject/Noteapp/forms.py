@@ -1,7 +1,7 @@
 from django.forms import ModelForm
 from .models import Subject, Note
 from django.contrib.auth.models import User
-
+from tinymce.widgets import TinyMCE
 
 class SubjectForm(ModelForm):
     class Meta:
@@ -14,3 +14,6 @@ class NoteForm(ModelForm):
         model = Note
         fields = '__all__'
         exclude = ['user','subject']
+        widgets = {
+            'note': TinyMCE(attrs={'cols': 80, 'rows': 30}),
+        }
